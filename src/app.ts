@@ -1,11 +1,5 @@
 import { withoutTrailingSlash } from "ufo";
-import {
-  lazyEventHandler,
-  toEventHandler,
-  isEventHandler,
-  eventHandler,
-  H3Event,
-} from "./event";
+import { lazyEventHandler, eventHandler, H3Event } from "./event";
 import { H3Error, createError } from "./error";
 import {
   send,
@@ -197,8 +191,6 @@ function normalizeLayer(input: InputLayer) {
 
   if (input.lazy) {
     handler = lazyEventHandler(handler as LazyEventHandler);
-  } else if (!isEventHandler(handler)) {
-    handler = toEventHandler(handler, undefined, input.route);
   }
 
   return {

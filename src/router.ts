@@ -5,7 +5,7 @@ import {
 } from "radix3";
 import type { HTTPMethod, EventHandler } from "./types";
 import { createError } from "./error";
-import { eventHandler, toEventHandler } from "./event";
+import { eventHandler } from "./event";
 
 export type RouterMethod = Lowercase<HTTPMethod>;
 const RouterMethods: RouterMethod[] = [
@@ -68,7 +68,7 @@ export function createRouter(opts: CreateRouterOptions = {}): Router {
         addRoute(path, handler, m);
       }
     } else {
-      route.handlers[method] = toEventHandler(handler, undefined, path);
+      route.handlers[method] = handler;
     }
     return router;
   };
